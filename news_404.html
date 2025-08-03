@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>記事が見つかりません - Example News</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .news-header {
+            background-color: #fff;
+            border-bottom: 1px solid var(--color-border);
+            padding: 15px 0;
+        }
+        .news-nav { display: flex; justify-content: space-between; align-items: center; }
+        .news-nav .logo { font-size: 2rem; font-weight: bold; color: #d00; }
+        .news-nav a { margin-left: 20px; font-weight: bold; }
+        .news-main { text-align: left; max-width: 800px; }
+        .news-main h1 { font-size: 2.5rem; }
+        .articles-section {
+            margin-top: 40px;
+            border-top: 1px solid var(--color-border);
+            padding-top: 30px;
+        }
+        .articles-section h3 { margin-bottom: 20px; }
+        .article-list { list-style: none; padding: 0; }
+        .article-list li { margin-bottom: 15px; }
+        .article-list a { font-size: 1.1rem; }
+        .article-list .date { font-size: 0.9rem; color: #6c757d; margin-left: 10px; }
+    </style>
+</head>
+<body class="error-page-wrapper">
+    <header class="news-header">
+        <div class="container news-nav">
+            <div class="logo">Example News</div>
+            <nav>
+                <a href="#">トップ</a>
+                <a href="#">国内</a>
+                <a href="#">国際</a>
+                <a href="#">経済</a>
+                <a href="#">スポーツ</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="error-page-main">
+        <div class="news-main">
+            <h1>お探しの記事は見つかりませんでした</h1>
+            <p>ページが削除されたか、URLが変更された可能性があります。以下の最新記事から関心のあるトピックを探してみてください。</p>
+            
+            <div class="articles-section">
+                <h3>最新の記事</h3>
+                <ul class="article-list">
+                    <li><a href="#">全国で猛暑日、熱中症に警戒<span class="date">2025/08/02</span></a></li>
+                    <li><a href="#">新しいAIモデルが発表、その驚くべき性能とは<span class="date">2025/08/02</span></a></li>
+                    <li><a href="#">週末の天気、広範囲で傘の出番<span class="date">2025/08/01</span></a></li>
+                    <li><a href="#">注目のインディーズゲーム、来月発売へ<span class="date">2025/07/31</span></a></li>
+                </ul>
+            </div>
+            <a href="index.html" class="btn" style="margin-top: 20px;">トップページへ</a>
+        </div>
+    </main>
+
+    <div class="curator-note">
+        <h4>学芸員の解説</h4>
+        <p>記事が膨大にあるニュースサイトでは、ユーザーが求める情報にたどり着けないことも。そのため、最新記事や人気記事へのリンクを提示し、サイト内を回遊させ続けることで、読者の離脱を防ぎます。</p>
+    </div>
+    <div class="tour-nav-container">
+        <a href="#" id="prevBtn" class="tour-nav-btn">前の展示へ</a>
+        <a href="#" id="nextBtn" class="tour-nav-btn">次の展示へ</a>
+    </div>
+
+    <script>
+        const tourPages = [
+            "corporate_404.html", "ecommerce_404.html", "fashion_404.html", "car_404.html", "bank_404.html",
+            "airline_404.html", "delivery_404.html", "gamestore_404.html", "crowdfunding_404.html", "gourmet_404.html",
+            "govportal_404.html", "subbox_404.html", "invest_404.html",
+            "news_404.html", "blog_404.html", "portfolio_404.html", "font_404.html", "museum_404.html",
+            "photo_404.html", "journal_404.html",
+            "webservice_404.html", "sns_404.html", "learning_404.html", "travel_404.html", "recipe_404.html",
+            "music_404.html", "forum_404.html", "npo_404.html", "realestate_404.html", "video_404.html",
+            "dating_404.html", "university_404.html", "weather_404.html", "medical_404.html", "iot_404.html",
+            "stream_404.html",
+            "github_404.html", "apidocs_404.html", "saas_404.html", "hosting_404.html", "government_404.html",
+            "nginx_404.html", "hackernews_404.html", "web3_404.html", "research_404.html",
+            "retro_404.html", "videogame_404.html", "cli_404.html", "plaintext_404.html", "teapot_404.html",
+            "unavailable_503.html", "generative_404.html", "auth_404.html", "map_404.html", "sound_404.html",
+            "ai_404.html", "glitch_404.html", "arcade_404.html", "abstract_404.html",
+            "classic_404.html", "creative_404.html", "interactive_404.html"
+        ];
+
+        const currentPage = window.location.pathname.split('/').pop();
+        const currentIndex = tourPages.indexOf(currentPage);
+
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        if (currentIndex > 0) {
+            prevBtn.href = tourPages[currentIndex - 1];
+        } else {
+            prevBtn.style.display = 'none'; // Hide if it's the first page
+        }
+
+        if (currentIndex < tourPages.length - 1) {
+            nextBtn.href = tourPages[currentIndex + 1];
+        } else {
+            nextBtn.style.display = 'none'; // Hide if it's the last page
+        }
+    </script>
+</body>
+</html>

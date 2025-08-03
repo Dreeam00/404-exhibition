@@ -1,0 +1,199 @@
+/* --- Global & Museum Styles --- */
+:root {
+    --font-primary: 'Noto Sans JP', sans-serif;
+    --font-secondary: 'Roboto', sans-serif;
+    --color-bg: #f8f9fa;
+    --color-text: #212529;
+    --color-primary: #007bff;
+    --color-card-bg: #ffffff;
+    --color-border: #dee2e6;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+.museum-header {
+    background-color: var(--color-card-bg);
+    padding: 40px 0;
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.museum-header h1 {
+    font-family: var(--font-secondary);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.museum-gallery {
+    padding: 40px 0;
+}
+
+.exhibit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.exhibit-card {
+    background-color: var(--color-card-bg);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.exhibit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.exhibit-card a {
+    display: block;
+    height: 100%;
+}
+
+.exhibit-card .card-header {
+    background-color: var(--color-primary);
+    color: #fff;
+    padding: 15px 20px;
+}
+
+.exhibit-card .card-header h3 {
+    margin: 0;
+    font-family: var(--font-secondary);
+}
+
+.exhibit-card .card-body {
+    padding: 20px;
+    color: #495057;
+}
+
+.museum-footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #6c757d;
+    border-top: 1px solid var(--color-border);
+}
+
+/* --- Common Styles for 404 Pages --- */
+.error-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: var(--font-secondary);
+}
+
+.error-page-main {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.error-page-content h1 {
+    font-size: 6rem;
+    margin: 0;
+    font-weight: 700;
+}
+
+.error-page-content p {
+    font-size: 1.2rem;
+    margin: 10px 0 30px;
+    color: #6c757d;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--color-primary);
+    color: #fff;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+/* --- Curator Note Style --- */
+.curator-note {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    max-width: 350px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    border: 1px solid #eee;
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+}
+.curator-note h4 {
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000;
+}
+.curator-note p {
+    margin: 0;
+    font-family: var(--font-primary);
+    color: #444;
+}
+
+/* --- Tour Navigation Styles --- */
+.tour-nav-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+}
+
+.tour-nav-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--color-primary);
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.tour-nav-btn:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>目的地が見つかりません - TravelFly</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .travel-wrapper {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/travel_background.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+        .travel-content h1 { font-size: 3rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .travel-content p { font-size: 1.3rem; }
+        .search-form {
+            background-color: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            gap: 10px;
+            max-width: 700px;
+            margin: 30px auto;
+        }
+        .search-form input {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+        }
+        .search-form button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff6b6b;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="error-page-wrapper travel-wrapper">
+    <main class="error-page-main">
+        <div class="error-page-content travel-content">
+            <h1>目的地が見つかりませんでした</h1>
+            <p>ご指定の場所への航空券は、現在取り扱っていないようです。</p>
+            <p>新しい旅先を探してみませんか？</p>
+            <form class="search-form">
+                <input type="text" placeholder="次の冒険はどこへ？ (例: パリ, 京都)">
+                <button type="submit">検索</button>
+            </form>
+            <a href="index.html" style="color: #fff; text-decoration: underline;">またはトップページへ</a>
+        </div>
+    </main>
+
+    <div class="curator-note">
+        <h4>学芸員の解説</h4>
+        <p>旅行サイトの404ページは、ユーザーの「旅をしたい」という気持ちを削がないことが大切。美しい風景写真で期待感を維持しつつ、すぐに別の目的地を検索できるフォームを提示することで、シームレスな体験を提供します。</p>
+    </div>
+    <div class="tour-nav-container">
+        <a href="#" id="prevBtn" class="tour-nav-btn">前の展示へ</a>
+        <a href="#" id="nextBtn" class="tour-nav-btn">次の展示へ</a>
+    </div>
+
+    <script>
+        const tourPages = [
+            "corporate_404.html", "ecommerce_404.html", "fashion_404.html", "car_404.html", "bank_404.html",
+            "airline_404.html", "delivery_404.html", "gamestore_404.html", "crowdfunding_404.html", "gourmet_404.html",
+            "govportal_404.html", "subbox_404.html", "invest_404.html",
+            "news_404.html", "blog_404.html", "portfolio_404.html", "font_404.html", "museum_404.html",
+            "photo_404.html", "journal_404.html",
+            "webservice_404.html", "sns_404.html", "learning_404.html", "travel_404.html", "recipe_404.html",
+            "music_404.html", "forum_404.html", "npo_404.html", "realestate_404.html", "video_404.html",
+            "dating_404.html", "university_404.html", "weather_404.html", "medical_404.html", "iot_404.html",
+            "stream_404.html",
+            "github_404.html", "apidocs_404.html", "saas_404.html", "hosting_404.html", "government_404.html",
+            "nginx_404.html", "hackernews_404.html", "web3_404.html", "research_404.html",
+            "retro_404.html", "videogame_404.html", "cli_404.html", "plaintext_404.html", "teapot_404.html",
+            "unavailable_503.html", "generative_404.html", "auth_404.html", "map_404.html", "sound_404.html",
+            "ai_404.html", "glitch_404.html", "arcade_404.html", "abstract_404.html",
+            "classic_404.html", "creative_404.html", "interactive_404.html"
+        ];
+
+        const currentPage = window.location.pathname.split('/').pop();
+        const currentIndex = tourPages.indexOf(currentPage);
+
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        if (currentIndex > 0) {
+            prevBtn.href = tourPages[currentIndex - 1];
+        } else {
+            prevBtn.style.display = 'none'; // Hide if it's the first page
+        }
+
+        if (currentIndex < tourPages.length - 1) {
+            nextBtn.href = tourPages[currentIndex + 1];
+        } else {
+            nextBtn.style.display = 'none'; // Hide if it's the last page
+        }
+    </script>
+</body>
+</html>

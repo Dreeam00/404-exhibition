@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ページが見つかりません - 架空省</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { background-color: #f5f5f5; }
+        .gov-header {
+            background-color: #fff;
+            border-bottom: 2px solid #005a9e;
+            padding: 15px 0;
+        }
+        .gov-header .logo { font-size: 1.8rem; font-weight: bold; }
+        .gov-main { text-align: left; max-width: 800px; }
+        .gov-main h1 { font-size: 2.2rem; border-bottom: 2px solid #ccc; padding-bottom: 10px; margin-bottom: 20px; }
+        .gov-search {
+            margin: 30px 0;
+            display: flex;
+        }
+        .gov-search input { flex-grow: 1; padding: 12px; border: 1px solid #ccc; }
+        .gov-search button { padding: 12px 20px; background: #333; color: #fff; border: none; }
+        .gov-links a { display: block; margin-bottom: 10px; text-decoration: underline; }
+    </style>
+</head>
+<body class="error-page-wrapper">
+    <header class="gov-header">
+        <div class="container">
+            <div class="logo">架空省</div>
+        </div>
+    </header>
+
+    <main class="error-page-main">
+        <div class="gov-main">
+            <h1>お探しのページは見つかりませんでした（Not Found）</h1>
+            <p>ご指定のページは、URLが変更・削除されたか、現在利用できない可能性があります。</p>
+            <p>お手数ですが、サイト内検索や以下のリンクから情報をお探しください。</p>
+            
+            <div class="gov-search">
+                <input type="search" placeholder="キーワードを入力">
+                <button>検索</button>
+            </div>
+
+            <div class="gov-links">
+                <h3>よく見られているページ</h3>
+                <ul>
+                    <li><a href="#">各種手続きについて</a></li>
+                    <li><a href="#">最新の報道発表</a></li>
+                    <li><a href="#">ご意見・お問い合わせ</a></li>
+                </ul>
+            </div>
+            <a href="index.html">トップページに戻る</a>
+        </div>
+    </main>
+
+    <div class="curator-note">
+        <h4>学芸員の解説</h4>
+        <p>公共機関のサイトでは、信頼性とアクセシビリティが最優先。誰にとっても分かりやすい言葉遣いと、目的の情報を探すための明確な導線（検索、リンク集）を設けるのが定石です。</p>
+    </div>
+    <div class="tour-nav-container">
+        <a href="#" id="prevBtn" class="tour-nav-btn">前の展示へ</a>
+        <a href="#" id="nextBtn" class="tour-nav-btn">次の展示へ</a>
+    </div>
+
+    <script>
+        const tourPages = [
+            "corporate_404.html", "ecommerce_404.html", "fashion_404.html", "car_404.html", "bank_404.html",
+            "airline_404.html", "delivery_404.html", "gamestore_404.html", "crowdfunding_404.html", "gourmet_404.html",
+            "govportal_404.html", "subbox_404.html", "invest_404.html",
+            "news_404.html", "blog_404.html", "portfolio_404.html", "font_404.html", "museum_404.html",
+            "photo_404.html", "journal_404.html",
+            "webservice_404.html", "sns_404.html", "learning_404.html", "travel_404.html", "recipe_404.html",
+            "music_404.html", "forum_404.html", "npo_404.html", "realestate_404.html", "video_404.html",
+            "dating_404.html", "university_404.html", "weather_404.html", "medical_404.html", "iot_404.html",
+            "stream_404.html",
+            "github_404.html", "apidocs_404.html", "saas_404.html", "hosting_404.html", "government_404.html",
+            "nginx_404.html", "hackernews_404.html", "web3_404.html", "research_404.html",
+            "retro_404.html", "videogame_404.html", "cli_404.html", "plaintext_404.html", "teapot_404.html",
+            "unavailable_503.html", "generative_404.html", "auth_404.html", "map_404.html", "sound_404.html",
+            "ai_404.html", "glitch_404.html", "arcade_404.html", "abstract_404.html",
+            "classic_404.html", "creative_404.html", "interactive_404.html"
+        ];
+
+        const currentPage = window.location.pathname.split('/').pop();
+        const currentIndex = tourPages.indexOf(currentPage);
+
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        if (currentIndex > 0) {
+            prevBtn.href = tourPages[currentIndex - 1];
+        } else {
+            prevBtn.style.display = 'none'; // Hide if it's the first page
+        }
+
+        if (currentIndex < tourPages.length - 1) {
+            nextBtn.href = tourPages[currentIndex + 1];
+        } else {
+            nextBtn.style.display = 'none'; // Hide if it's the last page
+        }
+    </script>
+</body>
+</html>

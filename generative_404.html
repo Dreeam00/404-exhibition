@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404: Generative Art</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { background-color: #1a1a1a; }
+        canvas {
+            display: block;
+            margin: 0 auto;
+            border: 1px solid #333;
+        }
+        .art-content h1 { color: #fff; }
+        .art-content p { color: #aaa; }
+    </style>
+</head>
+<body class="error-page-wrapper">
+    <main class="error-page-main">
+        <div class="error-page-content art-content">
+            <h1>404</h1>
+            <p>お探しのページは、このアートのように、二度と同じ形にはなりません。</p>
+            <canvas id="generativeArt" width="600" height="400"></canvas>
+            <a href="index.html" class="btn" style="margin-top: 20px;">ギャラリーに戻る</a>
+        </div>
+    </main>
+
+    <script>
+        const canvas = document.getElementById('generativeArt');
+        const ctx = canvas.getContext('2d');
+
+        function drawGenerativeArt() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#1a1a1a';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const numShapes = Math.floor(Math.random() * 50) + 20;
+
+            for (let i = 0; i < numShapes; i++) {
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                const size = Math.random() * 50 + 10;
+                const rotation = Math.random() * Math.PI * 2;
+                const alpha = Math.random() * 0.5 + 0.2;
+
+                const r = Math.floor(Math.random() * 255);
+                const g = Math.floor(Math.random() * 255);
+                const b = Math.floor(Math.random() * 255);
+
+                ctx.save();
+                ctx.translate(x, y);
+                ctx.rotate(rotation);
+                ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+
+                const shapeType = Math.floor(Math.random() * 3);
+                if (shapeType === 0) {
+                    ctx.fillRect(-size / 2, -size / 2, size, size);
+                } else if (shapeType === 1) {
+                    ctx.beginPath();
+                    ctx.arc(0, 0, size / 2, 0, Math.PI * 2);
+                    ctx.fill();
+                } else {
+                    ctx.beginPath();
+                    ctx.moveTo(0, -size / 2);
+                    ctx.lineTo(size / 2, size / 2);
+                    ctx.lineTo(-size / 2, size / 2);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+                ctx.restore();
+            }
+        }
+
+        drawGenerativeArt();
+    </script>
+
+    <div class="curator-note">
+        <h4>学芸員の解説</h4>
+        <p>ジェネレーティブアートは、アルゴリズムによって自動生成される芸術作品。この404ページは、読み込むたびに異なる抽象画が描かれ、エラーページでさえも予測不能な美しさを提供します。ウェブの動的な可能性を象徴する展示です。</p>
+    </div>
+    <div class="tour-nav-container">
+        <a href="#" id="prevBtn" class="tour-nav-btn">前の展示へ</a>
+        <a href="#" id="nextBtn" class="tour-nav-btn">次の展示へ</a>
+    </div>
+
+    <script>
+        const tourPages = [
+            "corporate_404.html", "ecommerce_404.html", "fashion_404.html", "car_404.html", "bank_404.html",
+            "airline_404.html", "delivery_404.html", "gamestore_404.html", "crowdfunding_404.html", "gourmet_404.html",
+            "govportal_404.html", "subbox_404.html", "invest_404.html",
+            "news_404.html", "blog_404.html", "portfolio_404.html", "font_404.html", "museum_404.html",
+            "photo_404.html", "journal_404.html",
+            "webservice_404.html", "sns_404.html", "learning_404.html", "travel_404.html", "recipe_404.html",
+            "music_404.html", "forum_404.html", "npo_404.html", "realestate_404.html", "video_404.html",
+            "dating_404.html", "university_404.html", "weather_404.html", "medical_404.html", "iot_404.html",
+            "stream_404.html",
+            "github_404.html", "apidocs_404.html", "saas_404.html", "hosting_404.html", "government_404.html",
+            "nginx_404.html", "hackernews_404.html", "web3_404.html", "research_404.html",
+            "retro_404.html", "videogame_404.html", "cli_404.html", "plaintext_404.html", "teapot_404.html",
+            "unavailable_503.html", "generative_404.html", "auth_404.html", "map_404.html", "sound_404.html",
+            "ai_404.html", "glitch_404.html", "arcade_404.html", "abstract_404.html",
+            "classic_404.html", "creative_404.html", "interactive_404.html"
+        ];
+
+        const currentPage = window.location.pathname.split('/').pop();
+        const currentIndex = tourPages.indexOf(currentPage);
+
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        if (currentIndex > 0) {
+            prevBtn.href = tourPages[currentIndex - 1];
+        } else {
+            prevBtn.style.display = 'none'; // Hide if it's the first page
+        }
+
+        if (currentIndex < tourPages.length - 1) {
+            nextBtn.href = tourPages[currentIndex + 1];
+        } else {
+            nextBtn.style.display = 'none'; // Hide if it's the last page
+        }
+    </script>
+</body>
+</html>

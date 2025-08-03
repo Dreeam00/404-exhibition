@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お探しのページが見つかりません - ExampleStore</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .ecommerce-header, .ecommerce-footer {
+            background-color: #232f3e;
+            color: #fff;
+            padding: 15px 0;
+        }
+        .ecommerce-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .ecommerce-nav .logo { font-size: 1.5rem; font-weight: bold; }
+        .ecommerce-nav a { color: #fff; margin-left: 15px; }
+        .search-container {
+            display: flex;
+            margin: 40px 0;
+        }
+        .search-input {
+            flex-grow: 1;
+            padding: 15px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-right: none;
+            border-radius: 5px 0 0 5px;
+        }
+        .search-button {
+            padding: 15px 25px;
+            font-size: 1rem;
+            background-color: #febd69;
+            border: none;
+            color: #111;
+            cursor: pointer;
+            border-radius: 0 5px 5px 0;
+        }
+        .suggestions h3 { margin-bottom: 15px; }
+        .category-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            list-style: none;
+            padding: 0;
+        }
+        .category-list a {
+            display: block;
+            padding: 10px 20px;
+            background-color: #f0f2f2;
+            border-radius: 5px;
+            color: #0f1111;
+        }
+    </style>
+</head>
+<body class="error-page-wrapper">
+    <header class="ecommerce-header">
+        <div class="container ecommerce-nav">
+            <div class="logo">ExampleStore</div>
+            <div>
+                <a href="#">アカウント</a>
+                <a href="#">カート</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="error-page-main">
+        <div class="container">
+            <h2>お探しのページは見つかりませんでした。</h2>
+            <p>申し訳ありません。ご指定のページは存在しないか、URLが変更された可能性があります。</p>
+            
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="キーワードで商品を検索">
+                <button class="search-button">検索</button>
+            </div>
+
+            <div class="suggestions">
+                <h3>または、こちらのカテゴリーからお探しください:</h3>
+                <ul class="category-list">
+                    <li><a href="#">家電・カメラ</a></li>
+                    <li><a href="#">ファッション</a></li>
+                    <li><a href="#">食品・飲料</a></li>
+                    <li><a href="#">本・コミック</a></li>
+                    <li><a href="#">ホーム＆キッチン</a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer class="ecommerce-footer">
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2025 ExampleStore</p>
+        </div>
+    </footer>
+
+    <div class="curator-note">
+        <h4>学芸員の解説</h4>
+        <p>ECサイトの404ページは「機会損失」を防ぐことが最重要。検索バーやカテゴリリンクを大きく配置し、ユーザーを他の商品へスムーズに誘導することで、サイトからの離脱を防ぎ、販売機会を維持します。</p>
+    </div>
+    <div class="tour-nav-container">
+        <a href="#" id="prevBtn" class="tour-nav-btn">前の展示へ</a>
+        <a href="#" id="nextBtn" class="tour-nav-btn">次の展示へ</a>
+    </div>
+
+    <script>
+        const tourPages = [
+            "corporate_404.html", "ecommerce_404.html", "fashion_404.html", "car_404.html", "bank_404.html",
+            "airline_404.html", "delivery_404.html", "gamestore_404.html", "crowdfunding_404.html", "gourmet_404.html",
+            "govportal_404.html", "subbox_404.html", "invest_404.html",
+            "news_404.html", "blog_404.html", "portfolio_404.html", "font_404.html", "museum_404.html",
+            "photo_404.html", "journal_404.html",
+            "webservice_404.html", "sns_404.html", "learning_404.html", "travel_404.html", "recipe_404.html",
+            "music_404.html", "forum_404.html", "npo_404.html", "realestate_404.html", "video_404.html",
+            "dating_404.html", "university_404.html", "weather_404.html", "medical_404.html", "iot_404.html",
+            "stream_404.html",
+            "github_404.html", "apidocs_404.html", "saas_404.html", "hosting_404.html", "government_404.html",
+            "nginx_404.html", "hackernews_404.html", "web3_404.html", "research_404.html",
+            "retro_404.html", "videogame_404.html", "cli_404.html", "plaintext_404.html", "teapot_404.html",
+            "unavailable_503.html", "generative_404.html", "auth_404.html", "map_404.html", "sound_404.html",
+            "ai_404.html", "glitch_404.html", "arcade_404.html", "abstract_404.html",
+            "classic_404.html", "creative_404.html", "interactive_404.html"
+        ];
+
+        const currentPage = window.location.pathname.split('/').pop();
+        const currentIndex = tourPages.indexOf(currentPage);
+
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        if (currentIndex > 0) {
+            prevBtn.href = tourPages[currentIndex - 1];
+        } else {
+            prevBtn.style.display = 'none'; // Hide if it's the first page
+        }
+
+        if (currentIndex < tourPages.length - 1) {
+            nextBtn.href = tourPages[currentIndex + 1];
+        } else {
+            nextBtn.style.display = 'none'; // Hide if it's the last page
+        }
+    </script>
+</body>
+</html>

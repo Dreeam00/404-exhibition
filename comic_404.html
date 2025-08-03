@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404: Lost Page Comic</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .comic-container {
+            max-width: 600px;
+            margin: 50px auto;
+            border: 2px solid #333;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            position: relative;
+        }
+        .comic-panel {
+            width: 100%;
+            display: none;
+        }
+        .comic-panel.active { display: block; }
+        .comic-panel img {
+            width: 100%;
+            display: block;
+        }
+        .comic-nav {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(0,0,0,0.7);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body class="error-page-wrapper">
+    <main class="error-page-main">
+        <div class="comic-container" id="comicContainer">
+            <div class="comic-panel active" data-panel="1">
+                <img src="images/comic_panel1.png" alt="Comic Panel 1">
+            </div>
+            <div class="comic-panel" data-panel="2">
+                <img src="images/comic_panel2.png" alt="Comic Panel 2">
+            </div>
+            <div class="comic-panel" data-panel="3">
+                <img src="images/comic_panel3.png" alt="Comic Panel 3">
+            </div>
+            <div class="comic-nav" id="comicNav">1 / 3</div>
+        </div>
+        <p style="margin-top: 20px;">クリックして物語を進める</p>
+        <a href="index.html" class="btn">物語を中断してホームへ</a>
+    </main>
+
+    <script>
+        const comicContainer = document.getElementById('comicContainer');
+        const comicPanels = document.querySelectorAll('.comic-panel');
+        const comicNav = document.getElementById('comicNav');
+        let currentPanel = 0;
+
+        function showPanel(index) {
+            comicPanels.forEach((panel, i) => {
+                if (i === index) {
+                    panel.classList.add('active');
+                } else {
+                    panel.classList.remove('active');
+                }
+            });
+            comicNav.textContent = `${index + 1} / ${comicPanels.length}`;
+        }
+
+        comicContainer.addEventListener('click', () => {
+            currentPanel++;
+            if (currentPanel >= comicPanels.length) {
+                currentPanel = 0; // Loop back to start
+            }
+            showPanel(currentPanel);
+        });
+
+        showPanel(currentPanel); // Initialize
+    </script>
+
+    <div class="curator-note">
+        <h4>学芸員の解説</h4>
+        <p>エラーページを単なる情報表示ではなく、インタラクティブな物語体験へと昇華させた例。ユーザーのクリックを促し、失われたページというテーマをコミカルに表現することで、ネガティブな体験をポジティブなものへと転換させます。</p>
+    </div>
+</body>
+</html>

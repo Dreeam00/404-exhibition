@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レシピが見つかりません - CookPad風</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .recipe-content img {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+        .recipe-content h1 { font-size: 2.5rem; color: #e8501b; }
+        .recipe-content p { max-width: 500px; margin: 15px auto 30px auto; }
+        .popular-tags a {
+            display: inline-block;
+            background-color: #f0f0f0;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body class="error-page-wrapper">
+    <main class="error-page-main">
+        <div class="error-page-content recipe-content">
+            <img src="images/recipe_chef.png" alt="困った顔のシェフのイラスト">
+            <h1>お探しのレシピは見つかりませんでした</h1>
+            <p>そのレシピはまだ発明されていないか、別の名前で登録されているかもしれません。人気のキーワードから探してみてはいかがでしょう？</p>
+            <div class="popular-tags">
+                <a href="#">鶏肉</a>
+                <a href="#">簡単</a>
+                <a href="#">作り置き</a>
+                <a href="#">パスタ</a>
+                <a href="#">お弁当</a>
+                <a href="#">節約</a>
+            </div>
+            <a href="index.html" class="btn" style="margin-top: 30px; background-color: #e8501b;">トップページへ</a>
+        </div>
+    </main>
+
+    <div class="curator-note">
+        <h4>学芸員の解説</h4>
+        <p>レシピサイトでは、目的の料理が見つからないユーザーをがっかりさせない工夫が凝らされています。親しみやすいイラストと、「簡単」「節約」といった人気の検索キーワード（タグ）を提示することで、次のアクションを促します。</p>
+    </div>
+    <div class="tour-nav-container">
+        <a href="#" id="prevBtn" class="tour-nav-btn">前の展示へ</a>
+        <a href="#" id="nextBtn" class="tour-nav-btn">次の展示へ</a>
+    </div>
+
+    <script>
+        const tourPages = [
+            "corporate_404.html", "ecommerce_404.html", "fashion_404.html", "car_404.html", "bank_404.html",
+            "airline_404.html", "delivery_404.html", "gamestore_404.html", "crowdfunding_404.html", "gourmet_404.html",
+            "govportal_404.html", "subbox_404.html", "invest_404.html",
+            "news_404.html", "blog_404.html", "portfolio_404.html", "font_404.html", "museum_404.html",
+            "photo_404.html", "journal_404.html",
+            "webservice_404.html", "sns_404.html", "learning_404.html", "travel_404.html", "recipe_404.html",
+            "music_404.html", "forum_404.html", "npo_404.html", "realestate_404.html", "video_404.html",
+            "dating_404.html", "university_404.html", "weather_404.html", "medical_404.html", "iot_404.html",
+            "stream_404.html",
+            "github_404.html", "apidocs_404.html", "saas_404.html", "hosting_404.html", "government_404.html",
+            "nginx_404.html", "hackernews_404.html", "web3_404.html", "research_404.html",
+            "retro_404.html", "videogame_404.html", "cli_404.html", "plaintext_404.html", "teapot_404.html",
+            "unavailable_503.html", "generative_404.html", "auth_404.html", "map_404.html", "sound_404.html",
+            "ai_404.html", "glitch_404.html", "arcade_404.html", "abstract_404.html",
+            "classic_404.html", "creative_404.html", "interactive_404.html"
+        ];
+
+        const currentPage = window.location.pathname.split('/').pop();
+        const currentIndex = tourPages.indexOf(currentPage);
+
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        if (currentIndex > 0) {
+            prevBtn.href = tourPages[currentIndex - 1];
+        } else {
+            prevBtn.style.display = 'none'; // Hide if it's the first page
+        }
+
+        if (currentIndex < tourPages.length - 1) {
+            nextBtn.href = tourPages[currentIndex + 1];
+        } else {
+            nextBtn.style.display = 'none'; // Hide if it's the last page
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ページが見つかりません - SoundWave</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #121212;
+            color: #fff;
+        }
+        .music-content .icon {
+            font-size: 6rem;
+            color: #1DB954;
+        }
+        .music-content h1 { font-size: 3rem; margin-top: 20px; }
+        .music-content p { color: #b3b3b3; }
+        .music-content .btn {
+            background-color: #1DB954;
+            border-radius: 50px;
+            padding: 15px 35px;
+            font-weight: bold;
+        }
+        .music-content .btn:hover { background-color: #1ed760; }
+    </style>
+</head>
+<body class="error-page-wrapper">
+    <main class="error-page-main">
+        <div class="error-page-content music-content">
+            <div class="icon">♪</div>
+            <h1>お探しの曲やポッドキャストは<br>見つかりませんでした</h1>
+            <p>検索ワードを変えて、もう一度試してみませんか？</p>
+            <a href="index.html" class="btn">ホーム</a>
+        </div>
+    </main>
+
+    <div class="curator-note">
+        <h4>学芸員の解説</h4>
+        <p>音楽サービスでは、ブランドカラー（ここでは緑）を効果的に使い、一貫した世界観を演出します。エラーページでもそのクールな印象は崩さず、シンプルに「ホームへ戻る」ことを促し、ユーザーを音楽体験に素早く復帰させます。</p>
+    </div>
+    <div class="tour-nav-container">
+        <a href="#" id="prevBtn" class="tour-nav-btn">前の展示へ</a>
+        <a href="#" id="nextBtn" class="tour-nav-btn">次の展示へ</a>
+    </div>
+
+    <script>
+        const tourPages = [
+            "corporate_404.html", "ecommerce_404.html", "fashion_404.html", "car_404.html", "bank_404.html",
+            "airline_404.html", "delivery_404.html", "gamestore_404.html", "crowdfunding_404.html", "gourmet_404.html",
+            "govportal_404.html", "subbox_404.html", "invest_404.html",
+            "news_404.html", "blog_404.html", "portfolio_404.html", "font_404.html", "museum_404.html",
+            "photo_404.html", "journal_404.html",
+            "webservice_404.html", "sns_404.html", "learning_404.html", "travel_404.html", "recipe_404.html",
+            "music_404.html", "forum_404.html", "npo_404.html", "realestate_404.html", "video_404.html",
+            "dating_404.html", "university_404.html", "weather_404.html", "medical_404.html", "iot_404.html",
+            "stream_404.html",
+            "github_404.html", "apidocs_404.html", "saas_404.html", "hosting_404.html", "government_404.html",
+            "nginx_404.html", "hackernews_404.html", "web3_404.html", "research_404.html",
+            "retro_404.html", "videogame_404.html", "cli_404.html", "plaintext_404.html", "teapot_404.html",
+            "unavailable_503.html", "generative_404.html", "auth_404.html", "map_404.html", "sound_404.html",
+            "ai_404.html", "glitch_404.html", "arcade_404.html", "abstract_404.html",
+            "classic_404.html", "creative_404.html", "interactive_404.html"
+        ];
+
+        const currentPage = window.location.pathname.split('/').pop();
+        const currentIndex = tourPages.indexOf(currentPage);
+
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        if (currentIndex > 0) {
+            prevBtn.href = tourPages[currentIndex - 1];
+        } else {
+            prevBtn.style.display = 'none'; // Hide if it's the first page
+        }
+
+        if (currentIndex < tourPages.length - 1) {
+            nextBtn.href = tourPages[currentIndex + 1];
+        } else {
+            nextBtn.style.display = 'none'; // Hide if it's the last page
+        }
+    </script>
+</body>
+</html>
